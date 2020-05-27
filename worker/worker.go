@@ -1,5 +1,9 @@
 package worker
 
+import (
+	"bitbucket.org/bigobject/going-definitions/flow"
+)
+
 // Definition Going worker definition
 type Definition struct {
 	Name         string
@@ -24,7 +28,7 @@ type Worker struct {
 	Name         string
 	Desc         string
 	Version      string
-	Creator      Creator
+	Creator      flow.WorkerCreator
 	ParamsSchema string
 	Path         string
 }
