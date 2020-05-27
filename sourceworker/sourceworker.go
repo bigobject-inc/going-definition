@@ -1,10 +1,5 @@
 package sourceworker
 
-import (
-	"bitbucket.org/bigobject/going-definitions/flow"
-	"bitbucket.org/bigobject/going-definitions/logger"
-)
-
 // Definition Going source worker definition
 type Definition struct {
 	Name         string
@@ -33,6 +28,3 @@ type SourceWorker struct {
 	ParamsSchema string
 	Path         string
 }
-
-// Creator Going source worker creator
-type Creator func(logger logger.Logger) flow.SourceWorker

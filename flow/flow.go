@@ -11,9 +11,30 @@ type Flow interface {
 	GetID() string
 	GetStatus() string
 	GetSetting() Setting
-	GetLogger() *logger.Logger
+	GetLogger() logger.Logger
 	Start(ctx context.Context) error
 	Stop() error
+}
+
+// SourceWorker Going Source worker interface
+type SourceWorker interface {
+	GetID() string
+	GetStatus() string
+	GetLogger() logger.Logger
+	Init(params string) error
+	BeforeRun() error
+	Start(ctx context.Context) error
+	Stop() error
+}
+
+// Worker Going worker interface
+type Worker interface {
+	GetLogger() logger.Logger
+	Init(wc WorkerCore, params string) error
+	Defer()
+	BeforeProcess() error
+	Process(data interface{}) (interface{}, error)
+	Timeout(seconds int, data interface{}) error
 }
 
 // WorkerCore Going Worker core interface
@@ -40,26 +61,12 @@ type WorkerCore interface {
 	Stop() error
 }
 
-// Worker Going worker interface
-type Worker interface {
-	GetLogger() *logger.Logger
-	Init(wc WorkerCore, params string) error
-	Defer()
-	BeforeProcess() error
-	Process(data interface{}) (interface{}, error)
-	Timeout(seconds int, data interface{}) error
-}
-
-// SourceWorker Going Source worker interface
-type SourceWorker interface {
-	GetID() string
-	GetStatus() string
-	// GetSetting() Setting
-	GetLogger() *logger.Logger
-	Init(params string) error
-	BeforeRun() error
-	Start(ctx context.Context) error
-	Stop() error
+// Channel Going worker channel
+type Channel struct {
+	ID      string
+	From    string
+	To      string
+	Channel chan interface{}
 }
 
 // Setting Going flow setting
@@ -91,10 +98,8 @@ type SettingWorker struct {
 	Params  string   `json:"params"`
 }
 
-// Channel Going worker channel
-type Channel struct {
-	ID      string
-	From    string
-	To      string
-	Channel chan interface{}
-}
+// SourceWorkerCreator Going flow source worker creator
+type SourceWorkerCreator func(logger logger.Logger) SourceWorker
+
+// WorkerCreator Going flow worker creator
+type WorkerCreator func(logger logger.Logger) Worker
