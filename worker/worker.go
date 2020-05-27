@@ -32,3 +32,6 @@ type Worker struct {
 	ParamsSchema string
 	Path         string
 }
+
+// WorkersMap Going workers map
+type WorkersMap map[string]Worker

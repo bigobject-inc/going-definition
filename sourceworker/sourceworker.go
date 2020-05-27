@@ -32,3 +32,6 @@ type SourceWorker struct {
 	ParamsSchema string
 	Path         string
 }
+
+// SourceWorkersMap Going source workers map
+type SourceWorkersMap map[string]SourceWorker
