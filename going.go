@@ -3,33 +3,36 @@ package going
 import (
 	"os"
 
-	"bitbucket.org/bigobject/going-definitions/flow"
 	"bitbucket.org/bigobject/going-definitions/logger"
-	"bitbucket.org/bigobject/going-definitions/sourceworker"
-	"bitbucket.org/bigobject/going-definitions/worker"
 )
 
-// PluginCatalogSourceWorker Plugin catalog source worker
-const PluginCatalogSourceWorker = "sourceWorkers"
+const (
+	// PluginSourceWorker Plugin source worker
+	PluginSourceWorker = "sourceWorkers"
+	// PluginWorker Plugin worker
+	PluginWorker = "workers"
+)
 
-// PluginCatalogWorker Plugin catalog worker
-const PluginCatalogWorker = "workers"
-
-// PluginCatalogTmp Plugin catalog tmp
-const PluginCatalogTmp = "tmp"
+const (
+	// StatusCreated Status created
+	StatusCreated = "created"
+	// StatusReady Status ready
+	StatusReady = "ready"
+	// StatusRunning Status running
+	StatusRunning = "running"
+	// StatusStop Status stop
+	StatusStop = "stop"
+	// StatusReceived Status received
+	StatusReceived = "received"
+	// StatusProcessed Status processed
+	StatusProcessed = "processed"
+)
 
 // Configure going configure
 type Configure struct {
 	// Web           web.Configure `json:"web"`
 	LogLevel      string `json:"logLevel"`
 	ChannelBuffer int    `json:"channelBuffer"`
-}
-
-// FlowConfigure going flow configure
-type FlowConfigure struct {
-	Flows         []flow.Setting            `json:"flows"`
-	SourceWorkers []sourceworker.Definition `json:"sourceWorkers"`
-	Workers       []worker.Definition       `json:"workers"`
 }
 
 // Logger going logger
@@ -48,8 +51,15 @@ type Paths struct {
 
 // Plugin going plugin
 type Plugin struct {
-	ID      string `json:"id"`
-	Code    string `json:"code"`
-	Catalog string `json:"catalog"`
-	Path    string `json:"path"`
+	ID   string `json:"id"`
+	Code string `json:"code"`
+	Path string `json:"path"`
+}
+
+// PluginInfo going plugin info
+type PluginInfo struct {
+	Name         string
+	Desc         string
+	Version      string
+	ParamsSchema string
 }

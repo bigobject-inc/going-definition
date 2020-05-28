@@ -3,6 +3,7 @@ package flow
 import (
 	"context"
 
+	"bitbucket.org/bigobject/going-definitions"
 	"bitbucket.org/bigobject/going-definitions/logger"
 )
 
@@ -18,8 +19,7 @@ type Flow interface {
 
 // SourceWorker Going Source worker interface
 type SourceWorker interface {
-	GetID() string
-	GetStatus() string
+	GetInfo() going.PluginInfo
 	GetLogger() logger.Logger
 	Init(params string) error
 	BeforeRun() error
@@ -27,8 +27,17 @@ type SourceWorker interface {
 	Stop() error
 }
 
+// SourceWorkerCore Going source Worker core interface
+type SourceWorkerCore interface {
+	GetID() string
+	GetStatus() string
+	Start(ctx context.Context) error
+	Stop() error
+}
+
 // Worker Going worker interface
 type Worker interface {
+	GetInfo() going.PluginInfo
 	GetLogger() logger.Logger
 	Init(wc WorkerCore, params string) error
 	Defer()
@@ -40,33 +49,21 @@ type Worker interface {
 // WorkerCore Going Worker core interface
 type WorkerCore interface {
 	GetID() string
+	GetSetting() SettingWorker
 	GetStatus() string
-	// GetSetting() Setting
-	GetChannelIn() *Channel
-	GetChannelOut() []*Channel
-	GetFromWorkerID() []string
-	GetToWorkerID() []string
-	GetWorker() Worker
-	GetSharedMemoryValue(sID, key string) (string, error)
-	SetWorker(worker Worker)
-	SetChannelIn(channel *Channel)
-	SetChannelOut(channel *Channel)
-	SetFromWorkerID(id string)
-	SetToWorkerID(id string)
+	SetChannelIn(chanIn *Channel) error
+	SetChannelOut(chanOut *Channel) error
+	SetWorker(w Worker) error
 	SetTimeout(seconds int, data interface{})
-	SetSharedMemory(creatorName string, dataSourceName string, params interface{}) (string, error)
-	SetSharedMemoryValue(sID, key, value string, expired int) error
 	SendDataNext(data interface{}) error
 	Start(ctx context.Context) error
 	Stop() error
 }
 
-// Channel Going worker channel
+// Channel flow worker channel
 type Channel struct {
-	ID      string
-	From    string
-	To      string
-	Channel chan interface{}
+	ID string
+	C  chan interface{}
 }
 
 // Setting Going flow setting
