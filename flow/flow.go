@@ -22,7 +22,7 @@ type SourceWorker interface {
 	GetInfo() going.PluginInfo
 	GetLogger() logger.Logger
 	Init(params string) error
-	BeforeRun() error
+	BeforeStart() error
 	Start(ctx context.Context) error
 	Stop() error
 }
@@ -31,6 +31,7 @@ type SourceWorker interface {
 type SourceWorkerCore interface {
 	GetID() string
 	GetStatus() string
+	SendDataNext(data interface{}) error
 	Start(ctx context.Context) error
 	Stop() error
 }
@@ -77,6 +78,7 @@ type Setting struct {
 
 // SettingSourceWorker Going flow setting source worker
 type SettingSourceWorker struct {
+	ID      string `json:"id"`
 	Key     string `json:"key"`
 	Name    string `json:"name"`
 	Desc    string `json:"desc"`
