@@ -29,13 +29,14 @@ type SourceWorker interface {
 
 // SourceWorkerCore Going source Worker core interface
 type SourceWorkerCore interface {
+	GetChannelOut() []*Channel
 	GetID() string
 	GetSetting() SettingSourceWorker
-	GetStatus() string
 	GetSourceWorker() SourceWorker
+	GetStatus() string
+	SendDataNext(data interface{}) error
 	SetChannelOut(chanOut *Channel) error
 	SetSourceWorker(s SourceWorker) error
-	SendDataNext(data interface{}) error
 	Start(ctx context.Context) error
 	Stop() error
 }
@@ -53,15 +54,17 @@ type Worker interface {
 
 // WorkerCore Going Worker core interface
 type WorkerCore interface {
+	GetChannelIn() *Channel
+	GetChannelOut() []*Channel
 	GetID() string
 	GetSetting() SettingWorker
 	GetStatus() string
 	GetWorker() Worker
+	SendDataNext(data interface{}) error
 	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
 	SetWorker(w Worker) error
 	SetTimeout(seconds int, data interface{})
-	SendDataNext(data interface{}) error
 	Start(ctx context.Context) error
 	Stop() error
 }
