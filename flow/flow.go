@@ -21,7 +21,7 @@ type Flow interface {
 type SourceWorker interface {
 	GetInfo() going.PluginInfo
 	GetLogger() logger.Logger
-	Init(params string) error
+	Init(swc SourceWorkerCore, params string) error
 	BeforeStart() error
 	Start(ctx context.Context) error
 	Stop() error
@@ -30,7 +30,11 @@ type SourceWorker interface {
 // SourceWorkerCore Going source Worker core interface
 type SourceWorkerCore interface {
 	GetID() string
+	GetSetting() SettingSourceWorker
 	GetStatus() string
+	GetSourceWorker() SourceWorker
+	SetChannelOut(chanOut *Channel) error
+	SetSourceWorker(s SourceWorker) error
 	SendDataNext(data interface{}) error
 	Start(ctx context.Context) error
 	Stop() error
@@ -52,6 +56,7 @@ type WorkerCore interface {
 	GetID() string
 	GetSetting() SettingWorker
 	GetStatus() string
+	GetWorker() Worker
 	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
 	SetWorker(w Worker) error
