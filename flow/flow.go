@@ -10,9 +10,14 @@ import (
 // Flow Going Flow interface
 type Flow interface {
 	GetID() string
-	GetStatus() string
-	GetSetting() Setting
 	GetLogger() logger.Logger
+	GetSetting() Setting
+	GetSourceWorkerCore() SourceWorkerCore
+	GetStatus() string
+	GetWorkerCoreByID(id string) (WorkerCore, error)
+	GetWorkerCores() []WorkerCore
+	Init(setting Setting, logPath, logLevel string) error
+	Defer()
 	Start(ctx context.Context) error
 	Stop() error
 }
