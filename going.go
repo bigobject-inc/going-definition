@@ -28,12 +28,6 @@ const (
 	StatusProcessed = "processed"
 )
 
-// Configure going configure
-type Configure struct {
-	// Web           web.Configure `json:"web"`
-	LogLevel string `json:"logLevel"`
-}
-
 // Logger going logger
 type Logger struct {
 	Logger  logger.Logger
