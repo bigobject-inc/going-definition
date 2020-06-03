@@ -2,9 +2,6 @@ package logger
 
 // Logger Going logger
 type Logger interface {
-	// AddOutput(writers ...io.Writer) Logger
-	// SetLevel(levelName string) Logger
-	// SetTimeFormat(s string) Logger
 	Fatal(v ...interface{})
 	Fatalf(format string, args ...interface{})
 	Error(v ...interface{})

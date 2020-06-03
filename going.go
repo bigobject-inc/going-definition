@@ -3,7 +3,7 @@ package going
 import (
 	"os"
 
-	"bitbucket.org/bigobject/going-definitions/logger"
+	"github.com/bigobject-inc/going-definition/logger"
 )
 
 const (

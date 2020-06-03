@@ -3,8 +3,8 @@ package flow
 import (
 	"context"
 
-	"bitbucket.org/bigobject/going-definitions"
-	"bitbucket.org/bigobject/going-definitions/logger"
+	"github.com/bigobject-inc/going-definition"
+	"github.com/bigobject-inc/going-definition/logger"
 )
 
 // Flow Going Flow interface

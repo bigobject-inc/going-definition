@@ -1,7 +1,7 @@
 package worker
 
 import (
-	"bitbucket.org/bigobject/going-definitions/flow"
+	"github.com/bigobject-inc/going-definition/flow"
 )
 
 // Definition Going worker definition
