@@ -37,10 +37,13 @@ type SourceWorkerCore interface {
 	GetChannelOut() []*Channel
 	GetID() string
 	GetSetting() SettingSourceWorker
+	GetSharedMemoryValue(sID, key string) (string, error)
 	GetSourceWorker() SourceWorker
 	GetStatus() string
 	SendDataNext(data interface{}) error
 	SetChannelOut(chanOut *Channel) error
+	SetSharedMemory(creatorName string, dataSourceName string, params interface{}) (string, error)
+	SetSharedMemoryValue(sID, key, value string, expired int) error
 	SetSourceWorker(s SourceWorker) error
 	Start(ctx context.Context) error
 	Stop() error
@@ -63,13 +66,16 @@ type WorkerCore interface {
 	GetChannelOut() []*Channel
 	GetID() string
 	GetSetting() SettingWorker
+	GetSharedMemoryValue(sID, key string) (string, error)
 	GetStatus() string
 	GetWorker() Worker
 	SendDataNext(data interface{}) error
 	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
-	SetWorker(w Worker) error
+	SetSharedMemory(creatorName string, dataSourceName string, params interface{}) (string, error)
+	SetSharedMemoryValue(sID, key, value string, expired int) error
 	SetTimeout(seconds int, data interface{})
+	SetWorker(w Worker) error
 	Start(ctx context.Context) error
 	Stop() error
 }
