@@ -88,11 +88,12 @@ type Channel struct {
 
 // Setting Going flow setting
 type Setting struct {
-	ID           string              `json:"id"`
-	Name         string              `json:"name"`
-	Desc         string              `json:"desc"`
-	SourceWorker SettingSourceWorker `json:"sourceWorker"`
-	Workers      []SettingWorker     `json:"workers"`
+	ID            string              `json:"id"`
+	Name          string              `json:"name"`
+	Desc          string              `json:"desc"`
+	ChannelBuffer int                 `json:"channelBuffer"`
+	SourceWorker  SettingSourceWorker `json:"sourceWorker"`
+	Workers       []SettingWorker     `json:"workers"`
 }
 
 // SettingSourceWorker Going flow setting source worker
