@@ -35,6 +35,7 @@ type SourceWorker interface {
 // SourceWorkerCore Going source Worker core interface
 type SourceWorkerCore interface {
 	GetChannelOut() []*Channel
+	GetFlow() Flow
 	GetID() string
 	GetSetting() SettingSourceWorker
 	GetSharedMemoryValue(sID, key string) (string, error)
@@ -42,9 +43,13 @@ type SourceWorkerCore interface {
 	GetStatus() string
 	SendDataNext(data interface{}) error
 	SetChannelOut(chanOut *Channel) error
-	SetSharedMemory(creatorName string, dataSourceName string, params interface{}) (string, error)
+	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemoryValue(sID, key, value string, expired int) error
-	SetSourceWorker(s SourceWorker) error
+	SetPublish(creatorName, dataSourceName, topic string) (string, error)
+	Subscribe(creatorName, dataSourceName, topic string, handle SubscribeHandle) error
+	Publish(pID, topic string, data interface{}) error
+	Init(sw SourceWorker, f Flow) error
+	Defer()
 	Start(ctx context.Context) error
 	Stop() error
 }
@@ -64,6 +69,7 @@ type Worker interface {
 type WorkerCore interface {
 	GetChannelIn() *Channel
 	GetChannelOut() []*Channel
+	GetFlow() Flow
 	GetID() string
 	GetSetting() SettingWorker
 	GetSharedMemoryValue(sID, key string) (string, error)
@@ -72,10 +78,14 @@ type WorkerCore interface {
 	SendDataNext(data interface{}) error
 	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
-	SetSharedMemory(creatorName string, dataSourceName string, params interface{}) (string, error)
+	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemoryValue(sID, key, value string, expired int) error
 	SetTimeout(seconds int, data interface{})
-	SetWorker(w Worker) error
+	SetPublish(creatorName, dataSourceName, topic string) (string, error)
+	Subscribe(creatorName, dataSourceName, topic string, handle SubscribeHandle) error
+	Publish(pID, topic string, data interface{}) error
+	Init(w Worker, flow Flow) error
+	Defer()
 	Start(ctx context.Context) error
 	Stop() error
 }
@@ -119,6 +129,9 @@ type SettingWorker struct {
 
 // SourceWorkerCreator Going flow source worker creator
 type SourceWorkerCreator func(logger logger.Logger) SourceWorker
+
+// SubscribeHandle flow subscribe handle
+type SubscribeHandle func(data interface{}) error
 
 // WorkerCreator Going flow worker creator
 type WorkerCreator func(logger logger.Logger) Worker
