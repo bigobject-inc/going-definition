@@ -38,7 +38,9 @@ type SourceWorkerCore interface {
 	GetFlow() Flow
 	GetID() string
 	GetSetting() SettingSourceWorker
+	GetSharedMemoryKeys(sID, pattern string) ([]string, error)
 	GetSharedMemoryValue(sID, key string) (string, error)
+	GetSharedMemoryValues(sID, keys []string) ([]string, error)
 	GetSourceWorker() SourceWorker
 	GetStatus() string
 	SendDataNext(data interface{}) error
@@ -72,7 +74,9 @@ type WorkerCore interface {
 	GetFlow() Flow
 	GetID() string
 	GetSetting() SettingWorker
+	GetSharedMemoryKeys(sID, pattern string) ([]string, error)
 	GetSharedMemoryValue(sID, key string) (string, error)
+	GetSharedMemoryValues(sID, keys []string) ([]string, error)
 	GetStatus() string
 	GetWorker() Worker
 	SendDataNext(data interface{}) error
