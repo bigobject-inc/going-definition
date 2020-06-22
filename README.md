@@ -1,4 +1,4 @@
-# Going Definition ver-1.0.0
+# Going Definition ver-1.1.0
 
 Definition Going framework struct
 
@@ -9,5 +9,8 @@ Definition Going framework struct
 
 Change Log
 =========================
-1.0.0
+1.0
   - [1.0.0] Add Logger, Flow, SourceWorker, Worker Definition
+
+1.1
+  - [1.1.0] SourceWorkerCore, WorkerCore add Publish & Subscribe
