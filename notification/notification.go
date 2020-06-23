@@ -18,21 +18,20 @@
 // 2020/06/03
 // ----------------------------------------------------------------------
 
-package sharedmemory
+package notification
 
-// SharedMemory shared memory
-type SharedMemory interface {
+// Notification notification
+type Notification interface {
 	Close() error
-	Get(key string) (string, error)
-	GetByKeys(keys []string) ([]string, error)
-	Keys(pattern string) ([]string, error)
-	Remove(key string) error
-	RemoveByKeys(keys []string) error
-	Put(key string, value string, expired int) error
+	Publish(topic string, data interface{}) error
+	Subscribe(topic string, handle SubscribeHandle) ([]string, error)
 }
 
 // Creator shared memory creator
-type Creator func(dsn string, params interface{}) (SharedMemory, error)
+type Creator func(dsn string, params interface{}) (Notification, error)
 
-// SharedMemoriesMap shared memories map
-type SharedMemoriesMap map[string]SharedMemory
+// NotificationsMap notifications map
+type NotificationsMap map[string]Notification
+
+// SubscribeHandle flow subscribe handle
+type SubscribeHandle func(data interface{}) error

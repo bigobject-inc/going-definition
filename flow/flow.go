@@ -25,6 +25,8 @@ import (
 
 	"github.com/bigobject-inc/going-definition"
 	"github.com/bigobject-inc/going-definition/logger"
+	"github.com/bigobject-inc/going-definition/notification"
+	"github.com/bigobject-inc/going-definition/sharedmemory"
 )
 
 // Flow Going Flow interface
@@ -57,19 +59,15 @@ type SourceWorkerCore interface {
 	GetChannelOut() []*Channel
 	GetFlow() Flow
 	GetID() string
+	GetNotification(pID string) notification.Notification
 	GetSetting() SettingSourceWorker
-	GetSharedMemoryKeys(sID, pattern string) ([]string, error)
-	GetSharedMemoryValue(sID, key string) (string, error)
-	GetSharedMemoryValues(sID, keys []string) ([]string, error)
+	GetSharedMemory(sID string) sharedmemory.SharedMemory
 	GetSourceWorker() SourceWorker
 	GetStatus() string
 	SendDataNext(data interface{}) error
 	SetChannelOut(chanOut *Channel) error
+	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
-	SetSharedMemoryValue(sID, key, value string, expired int) error
-	SetPublish(creatorName, dataSourceName, topic string) (string, error)
-	Subscribe(creatorName, dataSourceName, topic string, handle SubscribeHandle) error
-	Publish(pID, topic string, data interface{}) error
 	Init(sw SourceWorker, f Flow) error
 	Defer()
 	Start(ctx context.Context) error
@@ -93,21 +91,17 @@ type WorkerCore interface {
 	GetChannelOut() []*Channel
 	GetFlow() Flow
 	GetID() string
+	GetNotification(pID string) notification.Notification
 	GetSetting() SettingWorker
-	GetSharedMemoryKeys(sID, pattern string) ([]string, error)
-	GetSharedMemoryValue(sID, key string) (string, error)
-	GetSharedMemoryValues(sID, keys []string) ([]string, error)
+	GetSharedMemory(sID string) sharedmemory.SharedMemory
 	GetStatus() string
 	GetWorker() Worker
 	SendDataNext(data interface{}) error
 	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
+	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
-	SetSharedMemoryValue(sID, key, value string, expired int) error
 	SetTimeout(seconds int, data interface{})
-	SetPublish(creatorName, dataSourceName, topic string) (string, error)
-	Subscribe(creatorName, dataSourceName, topic string, handle SubscribeHandle) error
-	Publish(pID, topic string, data interface{}) error
 	Init(w Worker, flow Flow) error
 	Defer()
 	Start(ctx context.Context) error
@@ -153,9 +147,6 @@ type SettingWorker struct {
 
 // SourceWorkerCreator Going flow source worker creator
 type SourceWorkerCreator func(logger logger.Logger) SourceWorker
-
-// SubscribeHandle flow subscribe handle
-type SubscribeHandle func(data interface{}) error
 
 // WorkerCreator Going flow worker creator
 type WorkerCreator func(logger logger.Logger) Worker
