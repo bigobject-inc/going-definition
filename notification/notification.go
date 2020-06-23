@@ -18,36 +18,20 @@
 // 2020/06/03
 // ----------------------------------------------------------------------
 
-package logger
+package notification
 
-// Logger Going logger
-type Logger interface {
-	Fatal(v ...interface{})
-	Fatalf(format string, args ...interface{})
-	Error(v ...interface{})
-	Errorf(format string, args ...interface{})
-	Warn(v ...interface{})
-	Warnf(format string, args ...interface{})
-	Info(v ...interface{})
-	Infof(format string, args ...interface{})
-	Debug(v ...interface{})
-	Debugf(format string, args ...interface{})
+// Notification notification
+type Notification interface {
+	Close() error
+	Publish(topic string, data interface{}) error
+	Subscribe(topic string, handle SubscribeHandle) ([]string, error)
 }
 
-// LevelFatal logger level: fatal
-const LevelFatal = "fatal"
+// Creator shared memory creator
+type Creator func(dsn string, params interface{}) (Notification, error)
 
-// LevelError logger level: error
-const LevelError = "error"
+// NotificationsMap notifications map
+type NotificationsMap map[string]Notification
 
-// LevelWarn logger level: warn
-const LevelWarn = "warn"
-
-// LevelInfo logger level: info
-const LevelInfo = "info"
-
-// LevelDebug logger level: debug
-const LevelDebug = "debug"
-
-// LevelDisable logger level: disable
-const LevelDisable = "disable"
+// SubscribeHandle flow subscribe handle
+type SubscribeHandle func(data interface{}) error
