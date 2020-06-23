@@ -14,3 +14,5 @@ Change Log
 
 1.1
   - [1.1.0] SourceWorkerCore, WorkerCore add Publish & Subscribe
+  - [1.1.1] Add SharedMemory, Notification definition
+  - [1.1.1] Publish & Subscribe move to Notification
