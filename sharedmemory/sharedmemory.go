@@ -27,8 +27,10 @@ type Creator func(dsn string, params interface{}) (SharedMemory, error)
 type SharedMemory interface {
 	Get(key string) (string, error)
 	GetByKeys(keys []string) ([]string, error)
-	Put(key string, value string, expired int) error
 	Keys(pattern string) ([]string, error)
+	Remove(key string) error
+	RemoveByKeys(keys []string) error
+	Put(key string, value string, expired int) error
 	Defer()
 }
 
