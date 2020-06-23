@@ -33,11 +33,15 @@ import (
 type Flow interface {
 	GetID() string
 	GetLogger() logger.Logger
+	GetNotification(nID string) (notification.Notification, error)
 	GetSetting() Setting
+	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
 	GetSourceWorkerCore() SourceWorkerCore
 	GetStatus() string
 	GetWorkerCoreByID(id string) (WorkerCore, error)
 	GetWorkerCores() []WorkerCore
+	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
+	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
 	Init(setting Setting, logPath, logLevel string) error
 	Defer()
 	Start(ctx context.Context) error
@@ -59,9 +63,9 @@ type SourceWorkerCore interface {
 	GetChannelOut() []*Channel
 	GetFlow() Flow
 	GetID() string
-	GetNotification(pID string) notification.Notification
+	GetNotification(nID string) (notification.Notification, error)
 	GetSetting() SettingSourceWorker
-	GetSharedMemory(sID string) sharedmemory.SharedMemory
+	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
 	GetSourceWorker() SourceWorker
 	GetStatus() string
 	SendDataNext(data interface{}) error
@@ -91,9 +95,9 @@ type WorkerCore interface {
 	GetChannelOut() []*Channel
 	GetFlow() Flow
 	GetID() string
-	GetNotification(pID string) notification.Notification
+	GetNotification(nID string) (notification.Notification, error)
 	GetSetting() SettingWorker
-	GetSharedMemory(sID string) sharedmemory.SharedMemory
+	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
 	GetStatus() string
 	GetWorker() Worker
 	SendDataNext(data interface{}) error
