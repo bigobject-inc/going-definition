@@ -18,36 +18,19 @@
 // 2020/06/03
 // ----------------------------------------------------------------------
 
-package logger
+package sharedmemory
 
-// Logger Going logger
-type Logger interface {
-	Fatal(v ...interface{})
-	Fatalf(format string, args ...interface{})
-	Error(v ...interface{})
-	Errorf(format string, args ...interface{})
-	Warn(v ...interface{})
-	Warnf(format string, args ...interface{})
-	Info(v ...interface{})
-	Infof(format string, args ...interface{})
-	Debug(v ...interface{})
-	Debugf(format string, args ...interface{})
+// Creator shared memory creator
+type Creator func(dsn string, params interface{}) (SharedMemory, error)
+
+// SharedMemory shared memory
+type SharedMemory interface {
+	Get(key string) (string, error)
+	GetByKeys(keys []string) ([]string, error)
+	Put(key string, value string, expired int) error
+	Keys(pattern string) ([]string, error)
+	Defer()
 }
 
-// LevelFatal logger level: fatal
-const LevelFatal = "fatal"
-
-// LevelError logger level: error
-const LevelError = "error"
-
-// LevelWarn logger level: warn
-const LevelWarn = "warn"
-
-// LevelInfo logger level: info
-const LevelInfo = "info"
-
-// LevelDebug logger level: debug
-const LevelDebug = "debug"
-
-// LevelDisable logger level: disable
-const LevelDisable = "disable"
+// SharedMemoriesMap shared memories map
+type SharedMemoriesMap map[string]SharedMemory
