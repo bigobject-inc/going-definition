@@ -20,18 +20,23 @@
 
 package notification
 
+import (
+	"github.com/bigobject-inc/going-definition/logger"
+)
+
 // Notification notification
 type Notification interface {
 	Close() error
-	Publish(topic string, data interface{}) error
-	Subscribe(topic string, handle SubscribeHandle) ([]string, error)
+	Publish(topic, data string) error
+	Subscribe(topic string, handle SubscribeHandle) (string, error)
+	Unsubscribe(sID string) error
 }
 
 // Creator shared memory creator
-type Creator func(dsn string, params interface{}) (Notification, error)
+type Creator func(l logger.Logger, dsn string, params interface{}) (Notification, error)
 
 // NotificationsMap notifications map
 type NotificationsMap map[string]Notification
 
 // SubscribeHandle flow subscribe handle
-type SubscribeHandle func(data interface{}) error
+type SubscribeHandle func(data string) error
