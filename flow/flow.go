@@ -23,10 +23,11 @@ package flow
 import (
 	"context"
 
-	"github.com/bigobject-inc/going-definition"
-	"github.com/bigobject-inc/going-definition/logger"
-	"github.com/bigobject-inc/going-definition/notification"
-	"github.com/bigobject-inc/going-definition/sharedmemory"
+	"github.com/bigobject-inc/golib/logger"
+
+	"github.com/bigobject-inc/going-definition/v2"
+	"github.com/bigobject-inc/going-definition/v2/notification"
+	"github.com/bigobject-inc/going-definition/v2/sharedmemory"
 )
 
 // Flow Going Flow interface
