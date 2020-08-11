@@ -2,7 +2,6 @@
 
 Definition Going framework struct
 
-- Logger
 - Flow
 - SourceWorker, SourceWorkerCore
 - Worker, WorkerCore
