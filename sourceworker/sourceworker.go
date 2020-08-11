@@ -21,7 +21,7 @@
 package sourceworker
 
 import (
-	"github.com/bigobject-inc/going-definition/flow"
+	"github.com/bigobject-inc/going-definition/v2/flow"
 )
 
 // Definition Going source worker definition
