@@ -24,9 +24,9 @@ import (
 	"context"
 
 	"github.com/bigobject-inc/going-definition"
-	"github.com/bigobject-inc/going-definition/logger"
 	"github.com/bigobject-inc/going-definition/notification"
 	"github.com/bigobject-inc/going-definition/sharedmemory"
+	"github.com/bigobject-inc/golib/logger"
 )
 
 // Flow Going Flow interface

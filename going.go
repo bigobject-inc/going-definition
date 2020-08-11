@@ -23,7 +23,7 @@ package going
 import (
 	"os"
 
-	"github.com/bigobject-inc/going-definition/logger"
+	"github.com/bigobject-inc/golib/logger"
 )
 
 const (

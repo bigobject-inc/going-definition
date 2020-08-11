@@ -21,7 +21,7 @@
 package notification
 
 import (
-	"github.com/bigobject-inc/going-definition/logger"
+	"github.com/bigobject-inc/golib/logger"
 )
 
 // Notification notification
