@@ -21,7 +21,7 @@
 package worker
 
 import (
-	"github.com/bigobject-inc/going-definition/flow"
+	"github.com/bigobject-inc/going-definition/v2/flow"
 )
 
 // Definition Going worker definition
