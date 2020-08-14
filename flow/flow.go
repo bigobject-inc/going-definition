@@ -119,6 +119,12 @@ type Channel struct {
 	C  chan interface{}
 }
 
+// NodePosition Going flow node position
+type NodePosition struct {
+	X int `json:"x"`
+	Y int `json:"y"`
+}
+
 // Setting Going flow setting
 type Setting struct {
 	ID            string              `json:"id"`
@@ -131,23 +137,25 @@ type Setting struct {
 
 // SettingSourceWorker Going flow setting source worker
 type SettingSourceWorker struct {
-	ID      string `json:"id"`
-	Key     string `json:"key"`
-	Name    string `json:"name"`
-	Desc    string `json:"desc"`
-	Version string `json:"version"`
-	Params  string `json:"params"`
+	ID       string       `json:"id"`
+	Key      string       `json:"key"`
+	Name     string       `json:"name"`
+	Desc     string       `json:"desc"`
+	Version  string       `json:"version"`
+	Params   string       `json:"params"`
+	Position NodePosition `json:"position"`
 }
 
 // SettingWorker Going flow setting worker
 type SettingWorker struct {
-	ID      string   `json:"id"`
-	Parents []string `json:"parents"`
-	Key     string   `json:"key"`
-	Name    string   `json:"name"`
-	Desc    string   `json:"desc"`
-	Version string   `json:"version"`
-	Params  string   `json:"params"`
+	ID       string       `json:"id"`
+	Parents  []string     `json:"parents"`
+	Key      string       `json:"key"`
+	Name     string       `json:"name"`
+	Desc     string       `json:"desc"`
+	Version  string       `json:"version"`
+	Params   string       `json:"params"`
+	Position NodePosition `json:"position"`
 }
 
 // SourceWorkerCreator Going flow source worker creator
