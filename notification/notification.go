@@ -32,6 +32,12 @@ type Notification interface {
 	Unsubscribe(sID string) error
 }
 
+// DataWithWorkersName notification data with workers name
+type DataWithWorkersName struct {
+	Data        string
+	WorkersName []string
+}
+
 // Creator shared memory creator
 type Creator func(l logger.Logger, dsn string, params interface{}) (Notification, error)
 
