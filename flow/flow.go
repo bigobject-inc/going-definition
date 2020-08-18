@@ -41,6 +41,7 @@ type Flow interface {
 	GetStatus() string
 	GetWorkerCoreByID(id string) (WorkerCore, error)
 	GetWorkerCores() []WorkerCore
+	GetWorkerCoresByFilter(filter WorkerCoreFilter) []WorkerCore
 	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
 	Init(setting Setting, logPath, logLevel string) error
@@ -160,6 +161,9 @@ type SettingWorker struct {
 
 // SourceWorkerCreator Going flow source worker creator
 type SourceWorkerCreator func(logger logger.Logger) SourceWorker
+
+// WorkerCoreFilter worker core filter
+type WorkerCoreFilter func(wc WorkerCore) bool
 
 // WorkerCreator Going flow worker creator
 type WorkerCreator func(logger logger.Logger) Worker
