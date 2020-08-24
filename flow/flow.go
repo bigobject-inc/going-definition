@@ -122,8 +122,8 @@ type Channel struct {
 
 // NodePosition Going flow node position
 type NodePosition struct {
-	X int `json:"x"`
-	Y int `json:"y"`
+	Px float64 `json:"px"`
+	Py float64 `json:"py"`
 }
 
 // Setting Going flow setting
