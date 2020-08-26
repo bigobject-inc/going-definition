@@ -88,6 +88,7 @@ type Worker interface {
 	Defer()
 	BeforeProcess() error
 	Process(data interface{}) (interface{}, error)
+	Notification(data interface{}) error
 	Timeout(seconds int, data interface{}) error
 }
 
@@ -122,8 +123,8 @@ type Channel struct {
 
 // NodePosition Going flow node position
 type NodePosition struct {
-	X int `json:"x"`
-	Y int `json:"y"`
+	Px float64 `json:"px"`
+	Py float64 `json:"py"`
 }
 
 // Setting Going flow setting
