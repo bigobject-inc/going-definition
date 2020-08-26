@@ -88,6 +88,7 @@ type Worker interface {
 	Defer()
 	BeforeProcess() error
 	Process(data interface{}) (interface{}, error)
+	Notification(data interface{}) error
 	Timeout(seconds int, data interface{}) error
 }
 

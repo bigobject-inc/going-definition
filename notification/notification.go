@@ -34,7 +34,7 @@ type Notification interface {
 
 // DataWithWorkersName notification data with workers name
 type DataWithWorkersName struct {
-	Data        string
+	Data        interface{}
 	WorkersName []string
 }
 
