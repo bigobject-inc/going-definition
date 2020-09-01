@@ -51,6 +51,13 @@ type SourceWorker struct {
 	Creator      flow.SourceWorkerCreator
 	ParamsSchema string
 	Path         string
+	Status       Status
+}
+
+// Status Going source worker status
+type Status struct {
+	Success bool   `json:"success"`
+	Message string `json:"message"`
 }
 
 // SourceWorkersMap Going source workers map

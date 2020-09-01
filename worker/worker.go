@@ -42,6 +42,12 @@ type Setting struct {
 	ParamsSchema string `json:"paramsSchema"`
 }
 
+// Status Going worker status
+type Status struct {
+	Success bool   `json:"success"`
+	Message string `json:"message"`
+}
+
 // Worker Going worker
 type Worker struct {
 	Key          string
@@ -51,6 +57,7 @@ type Worker struct {
 	Creator      flow.WorkerCreator
 	ParamsSchema string
 	Path         string
+	Status       Status
 }
 
 // WorkersMap Going workers map
