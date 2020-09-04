@@ -46,6 +46,8 @@ const (
 	StatusReceived = "received"
 	// StatusProcessed Status processed
 	StatusProcessed = "processed"
+	// StatusError Status error
+	StatusError = "error"
 )
 
 // Logger going logger
