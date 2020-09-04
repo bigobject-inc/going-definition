@@ -39,6 +39,7 @@ type Flow interface {
 	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
 	GetSourceWorkerCore() SourceWorkerCore
 	GetStatus() string
+	GetStatusMessage() string
 	GetWorkerCoreByID(id string) (WorkerCore, error)
 	GetWorkerCores() []WorkerCore
 	GetWorkerCoresByFilter(filter WorkerCoreFilter) []WorkerCore
