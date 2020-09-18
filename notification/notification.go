@@ -20,10 +20,6 @@
 
 package notification
 
-import (
-	"github.com/bigobject-inc/golib/logger"
-)
-
 // Notification notification
 type Notification interface {
 	Close() error
@@ -31,18 +27,3 @@ type Notification interface {
 	Subscribe(topic string, handle SubscribeHandle) (string, error)
 	Unsubscribe(sID string) error
 }
-
-// DataWithWorkersName notification data with workers name
-type DataWithWorkersName struct {
-	Data        interface{}
-	WorkersName []string
-}
-
-// Creator shared memory creator
-type Creator func(l logger.Logger, dsn string, params interface{}) (Notification, error)
-
-// NotificationsMap notifications map
-type NotificationsMap map[string]Notification
-
-// SubscribeHandle flow subscribe handle
-type SubscribeHandle func(data string) error

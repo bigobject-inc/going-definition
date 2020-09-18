@@ -30,9 +30,3 @@ type SharedMemory interface {
 	RemoveByKeys(keys []string) error
 	Put(key string, value string, expired int) error
 }
-
-// Creator shared memory creator
-type Creator func(dsn string, params interface{}) (SharedMemory, error)
-
-// SharedMemoriesMap shared memories map
-type SharedMemoriesMap map[string]SharedMemory
