@@ -36,7 +36,9 @@ type Flow interface {
 	GetNotification(nID string) (notification.Notification, error)
 	GetSetting() Setting
 	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
-	GetSourceWorkerCore() SourceWorkerCore
+	GetSourceWorkerCoreByID(id string) (SourceWorkerCore, error)
+	GetSourceWorkerCores() []SourceWorkerCore
+	GetSourceWorkerCoresByFilter(filter SourceWorkerCoreFilter) []SourceWorkerCore
 	GetStatus() string
 	GetStatusMessage() string
 	GetWorkerCoreByID(id string) (WorkerCore, error)

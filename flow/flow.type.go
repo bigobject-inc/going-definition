@@ -16,12 +16,12 @@ type NodePosition struct {
 
 // Setting Going flow setting
 type Setting struct {
-	ID            string              `json:"id"`
-	Name          string              `json:"name"`
-	Desc          string              `json:"desc"`
-	ChannelBuffer int                 `json:"channelBuffer"`
-	SourceWorker  SettingSourceWorker `json:"sourceWorker"`
-	Workers       []SettingWorker     `json:"workers"`
+	ID            string                `json:"id"`
+	Name          string                `json:"name"`
+	Desc          string                `json:"desc"`
+	ChannelBuffer int                   `json:"channelBuffer"`
+	SourceWorkers []SettingSourceWorker `json:"sourceWorkers"`
+	Workers       []SettingWorker       `json:"workers"`
 }
 
 // SettingSourceWorker Going flow setting source worker
@@ -46,6 +46,9 @@ type SettingWorker struct {
 	Params   string       `json:"params"`
 	Position NodePosition `json:"position"`
 }
+
+// SourceWorkerCoreFilter source worker core filter
+type SourceWorkerCoreFilter func(swc SourceWorkerCore) bool
 
 // SourceWorkerCreator Going flow source worker creator
 type SourceWorkerCreator func(logger logger.Logger) SourceWorker
