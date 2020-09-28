@@ -1,6 +1,8 @@
 package flow
 
-import "github.com/bigobject-inc/golib/logger"
+import (
+	"github.com/bigobject-inc/going-definition/v2/logger"
+)
 
 // Channel flow worker channel
 type Channel struct {
@@ -16,12 +18,13 @@ type NodePosition struct {
 
 // Setting Going flow setting
 type Setting struct {
-	ID            string                `json:"id"`
-	Name          string                `json:"name"`
-	Desc          string                `json:"desc"`
-	ChannelBuffer int                   `json:"channelBuffer"`
-	SourceWorkers []SettingSourceWorker `json:"sourceWorkers"`
-	Workers       []SettingWorker       `json:"workers"`
+	ID            string `json:"id"`
+	Name          string `json:"name"`
+	Desc          string `json:"desc"`
+	ChannelBuffer int    `json:"channelBuffer"`
+	// SourceWorkers []SettingSourceWorker `json:"sourceWorkers"`
+	SourceWorker SettingSourceWorker `json:"sourceWorker"`
+	Workers      []SettingWorker     `json:"workers"`
 }
 
 // SettingSourceWorker Going flow setting source worker

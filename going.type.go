@@ -24,7 +24,7 @@ import (
 	"errors"
 	"os"
 
-	"github.com/bigobject-inc/golib/logger"
+	"github.com/bigobject-inc/going-definition/v2/logger"
 )
 
 var (
