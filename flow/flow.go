@@ -23,8 +23,7 @@ package flow
 import (
 	"context"
 
-	"github.com/bigobject-inc/golib/logger"
-
+	"github.com/bigobject-inc/going-definition/v2/logger"
 	"github.com/bigobject-inc/going-definition/v2/notification"
 	"github.com/bigobject-inc/going-definition/v2/sharedmemory"
 )
@@ -36,9 +35,11 @@ type Flow interface {
 	GetNotification(nID string) (notification.Notification, error)
 	GetSetting() Setting
 	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
-	GetSourceWorkerCoreByID(id string) (SourceWorkerCore, error)
-	GetSourceWorkerCores() []SourceWorkerCore
-	GetSourceWorkerCoresByFilter(filter SourceWorkerCoreFilter) []SourceWorkerCore
+	// Old
+	GetSourceWorkerCore() SourceWorkerCore
+	// GetSourceWorkerCoreByID(id string) (SourceWorkerCore, error)
+	// GetSourceWorkerCores() []SourceWorkerCore
+	// GetSourceWorkerCoresByFilter(filter SourceWorkerCoreFilter) []SourceWorkerCore
 	GetStatus() string
 	GetStatusMessage() string
 	GetWorkerCoreByID(id string) (WorkerCore, error)

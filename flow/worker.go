@@ -2,7 +2,7 @@ package flow
 
 import (
 	"github.com/bigobject-inc/going-definition/v2"
-	"github.com/bigobject-inc/golib/logger"
+	"github.com/bigobject-inc/going-definition/v2/logger"
 )
 
 // Worker Going worker interface

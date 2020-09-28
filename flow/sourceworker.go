@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/bigobject-inc/going-definition/v2"
-	"github.com/bigobject-inc/golib/logger"
+	"github.com/bigobject-inc/going-definition/v2/logger"
 )
 
 // SourceWorker Going Source worker interface
