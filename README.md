@@ -7,3 +7,4 @@ Definition Going framework struct
 - Worker, WorkerCore
 - SharedMemory
 - Notification
+- Logger
