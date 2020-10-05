@@ -9,7 +9,7 @@ import (
 
 // SourceWorkerCore Going source Worker core interface
 type SourceWorkerCore interface {
-	// GetChannelIn() *Channel
+	GetChannelIn() *Channel
 	GetChannelOut() []*Channel
 	GetFlow() Flow
 	GetID() string
@@ -19,7 +19,7 @@ type SourceWorkerCore interface {
 	GetSourceWorker() SourceWorker
 	GetStatus() string
 	SendDataNext(data interface{}) error
-	// SetChannelIn(chanIn *Channel) error
+	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
 	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
