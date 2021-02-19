@@ -5,11 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.4.0] - 2021-02-19
+
+### Added
+
+- Add BeforeStart, BeforeStop in SourceWorker and Worker
+- Add Defer in SourceWorker
+
+### Removed
+
+- Remove BeforeProcess in Worker
+
 ## [v2.3.1] - 2020-10-05
 
 ### Changed
 
-- Adjust flow sourceworker to sourceworkers
+- Adjust Flow SourceWorker to SourceWorkers
 
 ## [v2.3.0] - 2020-09-28
 
@@ -25,32 +36,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add flow node
+- Add Flow node
 
 ## [v2.2.0] - 2020-09-18
 
 ### Changed
 
-- Adjust source worker to source workers
+- Adjust SourceWorker to SourceWorkers
 
 ## [v2.1.2] - 2020-09-04
 
 ### Added
 
 - Add status: error
-- Add GetStatusMessage in flow
+- Add GetStatusMessage in Flow
 
 ## [v2.1.1] - 2020-09-01
 
 ### Added
 
-- Add status to sourceworker, worker
+- Add status to SourceWorker, Worker
 
 ## [v2.1.0] - 2020-08-26
 
 ### Added
 
-- Add Notification to worker
+- Add Notification to Worker
 
 ### Changed
 
@@ -60,14 +71,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add GetWorkerCoresByFilter in flow
+- Add GetWorkerCoresByFilter in Flow
 - Add DataWithWorkersName in notification
 
 ## [v2.0.1] - 2020-08-14
 
 ### Added
 
-- Add position to sourceworker, worker
+- Add position to SourceWorker, Worker
 
 ## [v2.0.0] - 2020-08-11
 
@@ -89,7 +100,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Move SharedMemory, Notification to flow
+- Move SharedMemory, Notification to Flow
 
 ## [v1.1.1] - 2020-06-23
 
@@ -116,6 +127,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add SourceWorker Definition
 - Add Worker Definition
 
+[v2.4.0]: https://github.com/bigobject-inc/going-definition/archive/v2.4.0.zip
 [v2.3.1]: https://github.com/bigobject-inc/going-definition/archive/v2.3.1.zip
 [v2.3.0]: https://github.com/bigobject-inc/going-definition/archive/v2.3.0.zip
 [v2.2.1]: https://github.com/bigobject-inc/going-definition/archive/v2.2.1.zip
