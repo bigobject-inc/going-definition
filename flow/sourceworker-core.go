@@ -25,7 +25,7 @@ type SourceWorkerCore interface {
 	SetChannelOut(chanOut *Channel) error
 	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
-	Init(sw SourceWorker, f Flow) error
+	Init(sw SourceWorker, f Flow, rootPath string) error
 	Defer()
 	Start(ctx context.Context) error
 	Stop() error
