@@ -17,6 +17,8 @@ type WorkerCore interface {
 	GetSetting() SettingWorker
 	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
 	GetStatus() string
+	GetStoragePath() string
+	GetPrivateStoragePath() string
 	GetWorker() Worker
 	SendDataNext(data interface{}) error
 	SetChannelIn(chanIn *Channel) error
