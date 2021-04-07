@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.5.1] - 2021-04-07
+
+### Added 
+
+- Add root path in Flow, SourceWorkerCore and WorkerCore
+
 ## [v2.5.0] - 2021-04-07
 
 ### Added 
@@ -133,6 +139,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add SourceWorker Definition
 - Add Worker Definition
 
+[v2.5.1]: https://github.com/bigobject-inc/going-definition/archive/v2.5.1.zip
 [v2.5.0]: https://github.com/bigobject-inc/going-definition/archive/v2.5.0.zip
 [v2.4.0]: https://github.com/bigobject-inc/going-definition/archive/v2.4.0.zip
 [v2.3.1]: https://github.com/bigobject-inc/going-definition/archive/v2.3.1.zip
