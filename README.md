@@ -1,4 +1,4 @@
-# Going Definition ver-2.5.0
+# Going Definition ver-2.5.1
 
 Definition Going framework struct
 
