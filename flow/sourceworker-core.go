@@ -18,6 +18,8 @@ type SourceWorkerCore interface {
 	GetSharedMemory(sID string) (sharedmemory.SharedMemory, error)
 	GetSourceWorker() SourceWorker
 	GetStatus() string
+	GetStoragePath() string
+	GetPrivateStoragePath() string
 	SendDataNext(data interface{}) error
 	SetChannelIn(chanIn *Channel) error
 	SetChannelOut(chanOut *Channel) error
