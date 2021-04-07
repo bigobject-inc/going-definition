@@ -45,7 +45,7 @@ type Flow interface {
 	GetWorkerCoresByFilter(filter WorkerCoreFilter) []WorkerCore
 	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
-	Init(setting Setting, logPath, logLevel string) error
+	Init(setting Setting, logPath, logLevel, rootPath string) error
 	Defer()
 	Start(ctx context.Context) error
 	Stop() error

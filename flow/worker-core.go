@@ -26,7 +26,7 @@ type WorkerCore interface {
 	SetNotification(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetSharedMemory(creatorName, dataSourceName string, params interface{}) (string, error)
 	SetTimeout(seconds int, data interface{})
-	Init(w Worker, flow Flow) error
+	Init(w Worker, flow Flow, rootPath string) error
 	Defer()
 	Start(ctx context.Context) error
 	Stop() error
