@@ -22,6 +22,7 @@ type Setting struct {
 	Name          string                `json:"name"`
 	Desc          string                `json:"desc"`
 	ChannelBuffer int                   `json:"channelBuffer"`
+	AutoRun       bool                  `json:"autoRun"`
 	SourceWorkers []SettingSourceWorker `json:"sourceWorkers"`
 	Workers       []SettingWorker       `json:"workers"`
 }
