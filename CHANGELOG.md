@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.6.1] - 2022-07-08
+
+### Changed
+
+- use go 1.18
+
+### Added 
+
+- add AutoRun
+
 
 ## [v2.6.0] - 2022-04-14
 
@@ -149,6 +159,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Worker Definition
 
 
+[v2.6.1]: https://github.com/bigobject-inc/going-definition/archive/v2.6.1.zip
 [v2.6.0]: https://github.com/bigobject-inc/going-definition/archive/v2.6.0.zip
 [v2.5.1]: https://github.com/bigobject-inc/going-definition/archive/v2.5.1.zip
 [v2.5.0]: https://github.com/bigobject-inc/going-definition/archive/v2.5.0.zip
